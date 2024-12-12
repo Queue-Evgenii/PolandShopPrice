@@ -38,8 +38,6 @@
 <script setup>
 import { ref } from "vue";
 import { Capacitor } from "@capacitor/core";
-import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
-import { Share } from "@capacitor/share";
 
 const isOpen = ref(false);
 const tab = ref(0);
