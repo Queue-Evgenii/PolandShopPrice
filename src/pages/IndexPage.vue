@@ -47,7 +47,7 @@
 
 <script setup>
 import { ref } from "vue";
-import DropdownItem from "../components/DropdownItem.vue";
+import DropdownItem from "src/components/DropdownItem.vue";
 import { getCategories } from "src/data";
 
 const categories = ref([]);

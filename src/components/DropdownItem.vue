@@ -37,7 +37,6 @@
 
 <script setup>
 import { ref } from "vue";
-import { Capacitor } from "@capacitor/core";
 
 const isOpen = ref(false);
 const tab = ref(0);
@@ -46,10 +45,7 @@ const handleTabClick = async (data, item) => {
   if (item.type === "file") {
     const filePath = `/data/categories/${data.parent_dir}/${item.data}`;
 
-    if (Capacitor.isNativePlatform()) {
-    } else {
-      window.open(filePath, "_blank");
-    }
+    window.open(filePath, "_blank");
   }
 };
 
