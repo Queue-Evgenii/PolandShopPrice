@@ -17,7 +17,7 @@
             :key="index"
             :name="index"
             :label="item.name"
-            @click="handleTabClick(data, item)"
+            @click="handleTabClick(data, item, index)"
           />
         </q-tabs>
 
@@ -40,13 +40,17 @@ import { ref } from "vue";
 
 const isOpen = ref(false);
 const tab = ref(0);
+let lastTab = 0;
 
-const handleTabClick = async (data, item) => {
+const handleTabClick = async (data, item, index) => {
   if (item.type === "file") {
-    const filePath = `/data/categories/${data.parent_dir}/${item.data}`;
+    const filePath = `/price/data/categories/${data.parent_dir}/${item.data}`;
 
     window.open(filePath, "_blank");
+    tab.value = lastTab;
+    return;
   }
+  lastTab = tab.value;
 };
 
 const beforeEnter = (el) => {
