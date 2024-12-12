@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /price/
+
+# Redirect all requests to /price/dist/index.html
+
+RewriteRule ^$ dist/index.html [L]
+RewriteRule (.*) dist/$1 [L]
