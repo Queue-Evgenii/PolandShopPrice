@@ -3,7 +3,7 @@
     <q-header class="header">
       <div class="_container flex justify-center">
         <a href="https://polandgroups.pl/" target="_blank" class="logo _img">
-          <img src="assets/logo.png" alt="" />
+          <img src="assets/logo.jpg" alt="" />
         </a>
       </div>
     </q-header>
