@@ -44,9 +44,8 @@ let lastTab = 0;
 
 const handleTabClick = async (data, item, index) => {
   if (item.type === "file") {
-    const filePath = `/price/data/categories/${data.parent_dir}/${item.data}`;
-
-    window.open(filePath, "_blank");
+    const filePath = `/data/categories/${data.parent_dir}/${item.data}`;
+    window.open("/price" + filePath, "_blank");
     tab.value = lastTab;
     return;
   }

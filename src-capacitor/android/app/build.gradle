@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "pl.polandgroups.pric"
+    namespace "pl.polandgroups.price"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "pl.polandgroups.pric"
+        applicationId "pl.polandgroups.price"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

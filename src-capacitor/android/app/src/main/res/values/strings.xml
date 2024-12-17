@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">PolandShop Price</string>
-    <string name="title_activity_main">PolandShop Price</string>
-    <string name="package_name">pl.polandgroups.pric</string>
-    <string name="custom_url_scheme">pl.polandgroups.pric</string>
+    <string name="app_name">Producent sufitów napinanych w Warszawie | POLAND GROUP</string>
+    <string name="title_activity_main">Producent sufitów napinanych w Warszawie | POLAND GROUP</string>
+    <string name="package_name">pl.polandgroups.price</string>
+    <string name="custom_url_scheme">pl.polandgroups.price</string>
 </resources>
