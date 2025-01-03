@@ -27,7 +27,7 @@
             :key="index"
             :name="index"
           >
-            {{ item.data }}
+            {{ item.type === "text" ? item.data : "" }}
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -43,6 +43,7 @@ const tab = ref(0);
 let lastTab = 0;
 
 const handleTabClick = async (data, item, index) => {
+  if (item.type === "link") window.open(item.data, "_blank");
   if (item.type === "file") {
     const filePath = `/data/categories/${data.parent_dir}/${item.data}`;
     window.open("/price" + filePath, "_blank");

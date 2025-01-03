@@ -8,11 +8,27 @@
           </header>
           <section class="main__dropdown dropdown" v-if="categories">
             <ul class="dropdown__list">
-              <dropdown-item
-                v-for="category in categories"
-                :key="category.id"
-                :data="category"
-              />
+              <template v-for="category in categories" :key="category.id">
+                <li v-if="category.data == undefined" class="dropdown__item">
+                  <q-btn class="dropdown__button">
+                    {{ category.name }}
+                  </q-btn>
+                </li>
+                <dropdown-item
+                  v-else-if="Array.isArray(category.data)"
+                  :data="category"
+                />
+                <li v-else class="dropdown__item">
+                  <q-btn
+                    class="dropdown__button"
+                    :href="`/price/data/categories/${category.parent_dir}/${category.data.data}`"
+                    target="_blank"
+                  >
+                    {{ category.name }}
+                  </q-btn>
+                </li>
+              </template>
+
               <li class="dropdown__item">
                 <q-btn
                   class="dropdown__button"
@@ -28,7 +44,7 @@
               <li class="dropdown__item">
                 <q-btn
                   class="dropdown__button"
-                  href="https://youtube.com"
+                  href="https://www.youtube.com/@sufitynapinane8596"
                   target="_blank"
                 >
                   <div class="btn-link__content">
@@ -53,6 +69,7 @@ import { getCategories } from "src/data";
 const categories = ref([]);
 
 getCategories().then((data) => {
+  data.sort((a, b) => a.id > b.id);
   categories.value = data;
 });
 defineOptions({
