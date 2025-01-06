@@ -69,7 +69,7 @@ import { getCategories } from "src/data";
 const categories = ref([]);
 
 getCategories().then((data) => {
-  data.sort((a, b) => a.id > b.id);
+  data.sort((a, b) => a.id - b.id);
   categories.value = data;
 });
 defineOptions({
