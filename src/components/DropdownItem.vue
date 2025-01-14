@@ -11,6 +11,7 @@
           align="justify"
           class="card__tabs"
           narrow-indicator
+          :vertical="isSmallScreen"
         >
           <q-tab
             v-for="(item, index) in data.data"
@@ -36,11 +37,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const isOpen = ref(false);
 const tab = ref(0);
 let lastTab = 0;
+
+// ================================
 
 const handleTabClick = async (data, item, index) => {
   if (item.type === "link") window.open(item.data, "_blank");
@@ -53,19 +56,41 @@ const handleTabClick = async (data, item, index) => {
   lastTab = tab.value;
 };
 
+// ================================
+
 const beforeEnter = (el) => {
   el.style.height = "0";
 };
 const enter = (el) => {
-  const height = el.scrollHeight;
+  const height = isSmallScreen.value ? "initial" : el.scrollHeight + "px";
   el.style.transition = "height 0.3s ease";
-  el.style.height = `${height}px`;
+  el.style.height = height;
   el.style.overflow = "hidden";
 };
 const leave = (el) => {
   el.style.transition = "height 0.3s ease";
   el.style.height = "0";
 };
+
+// ===============================
+
+const conditionalWidth = 768;
+const isSmallScreen = ref(window.innerWidth < conditionalWidth);
+
+const updateScreenWidth = () => {
+  isSmallScreen.value = window.innerWidth < conditionalWidth;
+  console.log(isSmallScreen.value);
+};
+
+onMounted(() => {
+  window.addEventListener("resize", updateScreenWidth);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateScreenWidth);
+});
+
+// ==============================
 
 const props = defineProps({
   data: {
