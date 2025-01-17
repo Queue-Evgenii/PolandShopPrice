@@ -4,6 +4,6 @@ export const data = {
   name: "Cennik Folii",
   data: {
     type: "file",
-    data: "2_5199476593809972735.pdf",
+    data: "Cennik Folii 2025 .pdf",
   },
 };
