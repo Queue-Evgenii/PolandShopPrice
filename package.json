@@ -13,11 +13,12 @@
     "build": "quasar build"
   },
   "dependencies": {
-    "@capacitor/android": "^6.2.0",
-    "@capacitor/filesystem": "^6.0.2",
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "@capacitor/filesystem": "^7.0.0",
+    "@capawesome-team/capacitor-file-opener": "^7.0.1",
     "@quasar/extras": "^1.16.4",
     "@quasar/icongenie": "^4.0.0",
-    "capacitor-pdf-viewer-plugin": "^1.0.0",
     "quasar": "^2.16.0",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12"

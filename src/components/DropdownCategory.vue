@@ -1,33 +1,17 @@
 <template>
   <li class="dropdown__item">
     <q-btn @click="isOpen = !isOpen" class="dropdown__button">
-      {{ data.name }}
+      {{ category.name }}
     </q-btn>
     <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
       <q-card v-if="isOpen" class="dropdown__body card">
-        <q-tabs
-          v-model="tab"
-          dense
-          align="justify"
-          class="card__tabs"
-          narrow-indicator
-          :vertical="isSmallScreen"
-        >
-          <q-tab
-            v-for="(item, index) in data.data"
-            :key="index"
-            :name="index"
-            :label="item.name"
-            @click="handleTabClick(data, item, index)"
-          />
+        <q-tabs v-model="tab" dense align="justify" class="card__tabs" narrow-indicator :vertical="isSmallScreen">
+          <q-tab v-for="(item, index) in category.data" :key="index" :name="index" :label="item.name"
+            @click="handleTabClick(category, item, index)" />
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="card__content">
-          <q-tab-panel
-            v-for="(item, index) in data.data"
-            :key="index"
-            :name="index"
-          >
+          <q-tab-panel v-for="(item, index) in category.data" :key="index" :name="index">
             {{ item.type === "text" ? item.data : "" }}
           </q-tab-panel>
         </q-tab-panels>
@@ -45,11 +29,12 @@ let lastTab = 0;
 
 // ================================
 
-const handleTabClick = async (data, item, index) => {
-  if (item.type === "link") window.open(item.data, "_blank");
-  if (item.type === "file") {
-    const filePath = `/data/categories/${data.parent_dir}/${item.data}`;
-    window.open("/price" + filePath, "_blank");
+const emitter = defineEmits(["openFile"]);
+
+const handleTabClick = (category, target, index) => {
+  if (target.type === "link") window.open(target.data, "_blank");
+  if (target.type === "file") {
+    emitter("openFile", category, target.data);
     tab.value = lastTab;
     return;
   }
@@ -93,7 +78,7 @@ onUnmounted(() => {
 // ==============================
 
 const props = defineProps({
-  data: {
+  category: {
     type: Object,
     required: true,
   },

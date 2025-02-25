@@ -1,4 +1,4 @@
-package pl.polandgroups.price;
+package pl.polandgroups;
 
 import com.getcapacitor.BridgeActivity;
 

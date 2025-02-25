@@ -1,4 +1,5 @@
 <template>
+  <loader-component v-if="isLoading" />
   <q-page class="flex flex-center main">
     <div class="_container">
       <div class="_sub-container">
@@ -9,50 +10,19 @@
           <section class="main__dropdown dropdown" v-if="categories">
             <ul class="dropdown__list">
               <template v-for="category in categories" :key="category.id">
-                <li v-if="category.data == undefined" class="dropdown__item">
-                  <q-btn class="dropdown__button">
-                    {{ category.name }}
-                  </q-btn>
-                </li>
-                <dropdown-item
-                  v-else-if="Array.isArray(category.data)"
-                  :data="category"
-                />
-                <li v-else class="dropdown__item">
-                  <q-btn
-                    class="dropdown__button"
-                    :href="`/price/data/categories/${category.parent_dir}/${category.data.data}`"
-                    target="_blank"
-                  >
-                    {{ category.name }}
-                  </q-btn>
-                </li>
+                <dropdown-category v-if="Array.isArray(category.data)" :category="category"
+                  @openFile="openFileDelegate" />
+                <button-category v-else :category="category" @openFile="openFileDelegate" />
               </template>
 
-              <li class="dropdown__item">
-                <q-btn
-                  class="dropdown__button"
-                  href="https://t.me"
-                  target="_blank"
-                >
-                  <div class="btn-link__content">
-                    <i class="material-icons">send</i>
-                    <span>Telegram</span>
-                  </div>
-                </q-btn>
-              </li>
-              <li class="dropdown__item">
-                <q-btn
-                  class="dropdown__button"
-                  href="https://www.youtube.com/@sufitynapinane8596"
-                  target="_blank"
-                >
-                  <div class="btn-link__content">
-                    <i class="material-icons">play_circle</i>
-                    <span>YouTube</span>
-                  </div>
-                </q-btn>
-              </li>
+              <custom-link href="https://t.me/+aSOZnoJqLyo0ODA8">
+                <i class="material-icons">send</i>
+                <span>Telegram</span>
+              </custom-link>
+              <custom-link href="https://www.youtube.com/@sufitynapinane8596">
+                <i class="material-icons">play_circle</i>
+                <span>YouTube</span>
+              </custom-link>
             </ul>
           </section>
         </div>
@@ -62,9 +32,31 @@
 </template>
 
 <script setup>
+import LoaderComponent from "src/components/LoaderComponent.vue";
+import DropdownCategory from "src/components/DropdownCategory.vue";
+import ButtonCategory from "src/components/ButtonCategory.vue";
+import CustomLink from "src/components/CustomLink.vue";
+
 import { ref } from "vue";
-import DropdownItem from "src/components/DropdownItem.vue";
 import { getCategories } from "src/data";
+import { openFile } from "src/fileopener";
+
+// ============================================
+
+const isLoading = ref(false);
+
+const openFileDelegate = (category, target_name) => {
+  const pending = openFile(category, target_name);
+  if (pending === undefined) return;
+
+  isLoading.value = true;
+  pending
+    .finally(() => {
+      isLoading.value = false;
+    })
+}
+
+// ============================================
 
 const categories = ref([]);
 

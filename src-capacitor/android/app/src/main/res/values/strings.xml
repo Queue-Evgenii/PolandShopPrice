@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Producent sufitów napinanych w Warszawie | POLAND GROUP</string>
     <string name="title_activity_main">Producent sufitów napinanych w Warszawie | POLAND GROUP</string>
-    <string name="package_name">pl.polandgroups.price</string>
-    <string name="custom_url_scheme">pl.polandgroups.price</string>
+    <string name="package_name">pl.polandgroups</string>
+    <string name="custom_url_scheme">pl.polandgroups</string>
 </resources>
