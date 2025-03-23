@@ -1,0 +1,1 @@
+const a={id:4,parent_dir:"katalogi-plikow-do-druku",name:"Katalogi Plik\xF3w do Druku",data:[{name:"Art and loft",type:"file",data:"Katalog Print Wood art & Loft(1).pdf"},{name:"Double Vision",type:"file",data:"DOUBLE VISION Polandgroup.pdf"},{name:"Katalog plik\xF3w",type:"file",data:"Katalog Plik\u0432w.pdf"}]};export{a as data};
