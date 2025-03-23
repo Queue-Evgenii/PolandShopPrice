@@ -19,6 +19,8 @@
     "@capawesome-team/capacitor-file-opener": "^7.0.1",
     "@quasar/extras": "^1.16.4",
     "@quasar/icongenie": "^4.0.0",
+    "pdfjs-dist": "^5.0.375",
+    "pngquant-bin": "^9.0.0",
     "quasar": "^2.16.0",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12"
@@ -31,7 +33,8 @@
     "eslint-plugin-vue": "^9.0.0",
     "postcss": "^8.4.14",
     "prettier": "^2.5.1",
-    "vite-plugin-checker": "^0.8.0"
+    "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-worker": "^1.0.5"
   },
   "engines": {
     "node": "^20 || ^18 || ^16",

@@ -5,13 +5,13 @@ export const data = {
   data: [
     {
       name: "Wersja do komputera",
-      type: "file",
-      data: "Wersja do komputera.zip",
+      type: "text",
+      data: "aplikacja jest w fazie tworzenia i niebawem będzie dostępna",
     },
     {
       name: "Wersja Do Androida",
-      type: "link",
-      data: "http://www.newmatros.ru/android/newmatros.apk",
+      type: "text",
+      data: "aplikacja jest w fazie tworzenia i niebawem będzie dostępna",
     },
     {
       name: "Wersja do Apple",

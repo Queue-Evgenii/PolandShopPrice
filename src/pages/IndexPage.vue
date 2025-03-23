@@ -1,6 +1,6 @@
 <template>
   <loader-component v-if="isLoading" />
-  <q-page class="flex flex-center main">
+  <q-page v-if="!isShowPdf" class="flex flex-center main">
     <div class="_container">
       <div class="_sub-container">
         <div class="content">
@@ -29,6 +29,8 @@
       </div>
     </div>
   </q-page>
+    <PdfCanvas v-if="isShowPdf" :pdf-url="pdfUrl" @close="isShowPdf = false" />
+
 </template>
 
 <script setup>
@@ -39,26 +41,19 @@ import CustomLink from "src/components/CustomLink.vue";
 
 import { ref } from "vue";
 import { getCategories } from "src/data";
-import { openFile } from "src/fileopener";
-
-// ============================================
-
-const isLoading = ref(false);
-
-const openFileDelegate = (category, target_name) => {
-  const pending = openFile(category, target_name);
-  if (pending === undefined) return;
-
-  isLoading.value = true;
-  pending
-    .finally(() => {
-      isLoading.value = false;
-    })
-}
-
-// ============================================
+import PdfCanvas from "components/PdfCanvas.vue";
 
 const categories = ref([]);
+const isLoading = ref(false);
+const isShowPdf = ref(false);
+const pdfUrl = ref("");
+
+const openFileDelegate = (category, target_name) => {
+  isShowPdf.value = true;
+  pdfUrl.value = `public/data/categories/${category.parent_dir}/${target_name}`;
+}
+
+
 
 getCategories().then((data) => {
   data.sort((a, b) => a.id - b.id);

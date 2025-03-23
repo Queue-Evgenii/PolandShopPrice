@@ -64,7 +64,6 @@ const isSmallScreen = ref(window.innerWidth < conditionalWidth);
 
 const updateScreenWidth = () => {
   isSmallScreen.value = window.innerWidth < conditionalWidth;
-  console.log(isSmallScreen.value);
 };
 
 onMounted(() => {
