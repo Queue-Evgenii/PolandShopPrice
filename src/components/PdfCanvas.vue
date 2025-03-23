@@ -18,7 +18,7 @@
 import { onMounted, ref, nextTick } from "vue";
 import { getDocument, GlobalWorkerOptions } from "pdfjs-dist/build/pdf";
 
-GlobalWorkerOptions.workerSrc = "/pdf/pdf.worker.mjs";
+GlobalWorkerOptions.workerSrc = "/price/pdf/pdf.worker.mjs";
 
 export default {
   props: {
