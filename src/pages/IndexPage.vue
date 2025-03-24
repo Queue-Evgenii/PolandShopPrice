@@ -29,7 +29,7 @@
       </div>
     </div>
   </q-page>
-    <PdfCanvas v-if="isShowPdf" :pdf-url="pdfUrl" @close="isShowPdf = false" />
+  <PdfCanvas v-if="isShowPdf" :pdf-url="pdfUrl" @close="isShowPdf = false" />
 
 </template>
 
@@ -49,11 +49,19 @@ const isShowPdf = ref(false);
 const pdfUrl = ref("");
 
 const openFileDelegate = (category, target_name) => {
-  isShowPdf.value = true;
-  pdfUrl.value = `public/data/categories/${category.parent_dir}/${target_name}`;
-}
+  const url = `public/data/categories/${category.parent_dir}/${target_name}`;
 
+  if (isRunningInBrowser()) {
+    window.open(url, "_blank");
+  } else {
+    isShowPdf.value = true;
+    pdfUrl.value = url;
+  }
+};
 
+const isRunningInBrowser = () => {
+  return !navigator.standalone && !window.matchMedia("(display-mode: standalone)").matches;
+};
 
 getCategories().then((data) => {
   data.sort((a, b) => a.id - b.id);
