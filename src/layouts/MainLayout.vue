@@ -1,6 +1,6 @@
 <template>
   <q-layout class="page" view="hhh lpr fff">
-    <q-header class="header">
+    <q-header class="header asd">
       <div class="_container flex justify-center">
         <a href="https://polandgroups.pl/" target="_blank" class="logo _img">
           <img src="assets/logo.png" alt="" />

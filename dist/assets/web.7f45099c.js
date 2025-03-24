@@ -1,0 +1,1 @@
+import{W as t}from"./IndexPage.93629607.js";import"./index.b8e25b1a.js";import"./dom.d891fcdd.js";import"./QBtn.51d911d6.js";import"./QResizeObserver.485b44a1.js";class o extends t{async openFile(e){if(!e.blob)throw new Error(o.ERROR_BLOB_MISSING);const r=URL.createObjectURL(e.blob);window.open(r,"_blank")}}o.ERROR_BLOB_MISSING="blob must be provided.";export{o as FileOpenerWeb};

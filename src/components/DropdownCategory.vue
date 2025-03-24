@@ -1,5 +1,5 @@
 <template>
-  <li class="dropdown__item">
+  <li class="dropdown__item aaa">
     <q-btn @click="isOpen = !isOpen" class="dropdown__button">
       {{ category.name }}
     </q-btn>

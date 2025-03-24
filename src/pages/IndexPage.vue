@@ -1,6 +1,6 @@
 <template>
   <loader-component v-if="isLoading" />
-  <q-page class="flex flex-center main">
+  <q-page class="flex flex-center main aaaa">
     <div class="_container">
       <div class="_sub-container">
         <div class="content">

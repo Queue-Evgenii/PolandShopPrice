@@ -1,3 +1,4 @@
+
 const categoriesModules = import.meta.glob("./categories/*/*.js");
 
 export const getCategories = () => {

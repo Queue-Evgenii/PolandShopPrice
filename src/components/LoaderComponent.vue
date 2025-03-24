@@ -1,5 +1,5 @@
 <template>
-  <div class="loader">
+  <div class="loader aaa">
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>

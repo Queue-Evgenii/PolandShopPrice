@@ -1,3 +1,4 @@
+
 import { FileOpener } from "@capawesome-team/capacitor-file-opener";
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";

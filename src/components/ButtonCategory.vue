@@ -1,5 +1,5 @@
 <template>
-  <li v-if="category.data !== undefined" class="dropdown__item">
+  <li v-if="category.data !== undefined" class="dropdown__item aaa">
     <q-btn class="dropdown__button" @click="handleClick(category)">
       {{ category.name }}
     </q-btn>
