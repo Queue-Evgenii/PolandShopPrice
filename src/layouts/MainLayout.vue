@@ -20,6 +20,6 @@ defineOptions({
 </script>
 <style>
 .page {
-  background: url("./background.jpg") center / cover no-repeat;
+  background: url('./../../public/assets/background.jpg') center / cover no-repeat;
 }
 </style>
