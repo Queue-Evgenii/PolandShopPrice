@@ -49,7 +49,8 @@ const isShowPdf = ref(false);
 const pdfUrl = ref("");
 
 const openFileDelegate = (category, target_name) => {
-  const url = `public/data/categories/${category.parent_dir}/${target_name}`;
+  const baseUrl = import.meta.env.VITE_CAPACITOR ? '/..' : '/public';
+  const url = `${baseUrl}/data/categories/${category.parent_dir}/${target_name}`;
 
   if (isRunningInBrowser()) {
     window.open(url, "_blank");

@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">PolandGroup Price</string>
-    <string name="title_activity_main">PolandGroup Price</string>
-    <string name="package_name">pl.polandgroups</string>
-    <string name="custom_url_scheme">pl.polandgroups</string>
-</resources>

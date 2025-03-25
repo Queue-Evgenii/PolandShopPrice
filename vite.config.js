@@ -3,6 +3,7 @@ import WorkerPlugin from "vite-plugin-worker";
 import { quasar } from "@quasar/vite-plugin";
 
 export default defineConfig({
+  base: process.env.VITE_CAPACITOR ? '/' : '/price/',
   plugins: [
     WorkerPlugin(), // <== Плагин для поддержки воркеров
     quasar({ sassVariables: "src/quasar-variables.sass" }),
@@ -13,6 +14,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ['pdf.worker.mjs'], // Убедитесь, что ваш worker не будет включен в bundle
+      output: {
+        assetFileNames: process.env.VITE_CAPACITOR ? '[name][ext]' : 'price/[name][ext]',
+      },
     },
   },
 });

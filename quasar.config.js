@@ -55,7 +55,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: "/price/",
+      publicPath: process.env.VITE_CAPACITOR ? '/' : '/price/',
       // analyze: true,
       // env: {},
       // rawDefine: {}

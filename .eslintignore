@@ -6,3 +6,5 @@
 .eslintrc.cjs
 /quasar.config.*.temporary.compiled*
 public/pdf/pdf.worker.mjs
+/android
+/ios
