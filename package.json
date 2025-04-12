@@ -6,6 +6,7 @@
   "author": "Queue-Evgenii <genadolgii228@gmail.com>",
   "private": true,
   "scripts": {
+    "build:cap": "VITE_CAPACITOR=true quasar build && npx cap sync android",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
