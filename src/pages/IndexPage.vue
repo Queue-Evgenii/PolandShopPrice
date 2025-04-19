@@ -1,6 +1,6 @@
 <template>
   <loader-component v-if="isLoading" />
-  <q-page v-if="!isShowPdf" class="flex flex-center main">
+  <q-page class="flex flex-center main">
     <div class="_container">
       <div class="_sub-container">
         <div class="content">
@@ -11,7 +11,7 @@
             <ul class="dropdown__list">
               <template v-for="category in categories" :key="category.id">
                 <dropdown-category v-if="Array.isArray(category.data)" :category="category"
-                  @openFile="openFileDelegate" />
+                                   @openFile="openFileDelegate" />
                 <button-category v-else :category="category" @openFile="openFileDelegate" />
               </template>
 
@@ -29,8 +29,6 @@
       </div>
     </div>
   </q-page>
-  <PdfCanvas v-if="isShowPdf" :pdf-url="pdfUrl" @close="isShowPdf = false" />
-
 </template>
 
 <script setup>
@@ -38,37 +36,28 @@ import LoaderComponent from "src/components/LoaderComponent.vue";
 import DropdownCategory from "src/components/DropdownCategory.vue";
 import ButtonCategory from "src/components/ButtonCategory.vue";
 import CustomLink from "src/components/CustomLink.vue";
-
 import { ref } from "vue";
 import { getCategories } from "src/data";
-import PdfCanvas from "components/PdfCanvas.vue";
+import { Capacitor } from "@capacitor/core";
 
 const categories = ref([]);
 const isLoading = ref(false);
-const isShowPdf = ref(false);
-const pdfUrl = ref("");
 
-const openFileDelegate = (category, target_name) => {
-  const baseUrl = import.meta.env.VITE_CAPACITOR ? '/..' : '/public';
-  const url = `${baseUrl}/data/categories/${category.parent_dir}/${target_name}`;
+const openFileDelegate = async (category, target_name) => {
+  const isNativeApp = Capacitor.isNativePlatform();
 
-  if (isRunningInBrowser()) {
-    window.open(url, "_blank");
+  const pdfUrl = `https://polandgroups.pl/price/public/data/categories/${category.parent_dir}/${target_name}`;
+
+  if (!isNativeApp) {
+    window.open(pdfUrl, "_blank");
   } else {
-    isShowPdf.value = true;
-    pdfUrl.value = url;
+    const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
+    window.location.href = viewerUrl;
   }
-};
-
-const isRunningInBrowser = () => {
-  return !navigator.standalone && !window.matchMedia("(display-mode: standalone)").matches;
 };
 
 getCategories().then((data) => {
   data.sort((a, b) => a.id - b.id);
   categories.value = data;
-});
-defineOptions({
-  name: "IndexPage",
 });
 </script>
