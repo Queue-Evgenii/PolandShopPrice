@@ -4,6 +4,7 @@ export const data = {
   name: "Cennik Profili",
   data: {
     type: "file",
-    data: "Katalog Profile 2025.pdf",
+    // data: "Katalog Profile 2025.pdf",
+    data: "Katalog Profil.pdf",
   },
 };
