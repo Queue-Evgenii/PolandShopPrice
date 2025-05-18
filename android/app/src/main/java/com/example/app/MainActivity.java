@@ -1,4 +1,4 @@
-package com.example.app;
+package com.polandgroup.polandshopprice;
 
 import com.getcapacitor.BridgeActivity;
 
