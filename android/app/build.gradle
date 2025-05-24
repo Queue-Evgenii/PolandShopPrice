@@ -1,7 +1,10 @@
 def env = new Properties()
-def envFile = rootProject.file(".env")
+def envFile = new File(rootDir.parentFile, ".env") // 🔥 самый надежный способ
 if (envFile.exists()) {
+    println "✅ .env найден по пути: ${envFile}"
     envFile.withInputStream { stream -> env.load(stream) }
+} else {
+    println "❌ .env НЕ найден по пути: ${envFile}"
 }
 
 apply plugin: 'com.android.application'
