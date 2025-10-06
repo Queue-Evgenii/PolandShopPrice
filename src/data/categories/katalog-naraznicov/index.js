@@ -4,6 +4,6 @@ export const data = {
   name: "Katalog narozniki lączniki.",
   data: {
     type: "file",
-    data: "Katalog narozniki lączniki.pdf",
+    data: "Katalog naraznicov.pdf",
   },
 };
